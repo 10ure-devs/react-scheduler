@@ -1,11 +1,11 @@
 {
-  "name": "@bitnoi.se/react-scheduler",
+  "name": "@10ure-devs/react-scheduler",
   "version": "0.1.5",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Bitnoise/react-scheduler"
+    "url": "https://github.com/10ure-devs/react-scheduler"
   },
   "keywords": [
     "scheduler",
@@ -16,8 +16,8 @@
     "calendar"
   ],
   "author": {
-    "name": "Bitnoise",
-    "url": "https://scheduler.bitnoise.pl/"
+    "name": "10ure Devs",
+    "url": "https://github.com/10ure-devs"
   },
   "scripts": {
     "dev": "vite",

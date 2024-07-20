@@ -5,18 +5,33 @@ import {
   StyledImageWrapper,
   StyledInnerWrapper,
   StyledText,
+  StyledTextTitle,
+  StyledHeaderWrapper,
   StyledTextWrapper,
-  StyledWrapper
+  StyledWrapper,
+  StyledTextButton
 } from "./styles";
 import { LeftColumnItemProps } from "./types";
 
-const LeftColumnItem: FC<LeftColumnItemProps> = ({ id, item, rows, onItemClick }) => {
+const LeftColumnItem: FC<LeftColumnItemProps> = ({
+  id,
+  item,
+  rows,
+  onItemClick,
+  onTextButtonClick,
+  hasAParent,
+  textButtonLabel
+}) => {
+  const handleTextButtonClick = () => {
+    onTextButtonClick && onTextButtonClick?.({ id, label: item });
+  };
   return (
     <StyledWrapper
       title={item.title + " | " + item.subtitle}
       clickable={typeof onItemClick === "function"}
       rows={rows}
-      onClick={() => onItemClick?.({ id, label: item })}>
+      onClick={() => onItemClick?.({ id, label: item })}
+      hasAParent={hasAParent}>
       <StyledInnerWrapper>
         <StyledImageWrapper>
           {item.icon ? (
@@ -25,10 +40,22 @@ const LeftColumnItem: FC<LeftColumnItemProps> = ({ id, item, rows, onItemClick }
             <Icon iconName="defaultAvatar" />
           )}
         </StyledImageWrapper>
-        <StyledTextWrapper>
-          <StyledText isMain>{item.title}</StyledText>
-          <StyledText>{item.subtitle}</StyledText>
-        </StyledTextWrapper>
+        {!hasAParent && (
+          <StyledHeaderWrapper>
+            <StyledTextTitle>{item.title}</StyledTextTitle>
+          </StyledHeaderWrapper>
+        )}
+        {hasAParent && (
+          <StyledTextWrapper>
+            <StyledTextTitle>{item.title}</StyledTextTitle>
+            <StyledText>{item.subtitle}</StyledText>
+            {onTextButtonClick && (
+              <StyledTextButton onClick={handleTextButtonClick}>
+                {textButtonLabel ?? "Remove"}
+              </StyledTextButton>
+            )}
+          </StyledTextWrapper>
+        )}
       </StyledInnerWrapper>
     </StyledWrapper>
   );

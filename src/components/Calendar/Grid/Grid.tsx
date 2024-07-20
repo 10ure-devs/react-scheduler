@@ -69,13 +69,20 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
     return () => observerLeft.disconnect();
   }, [handleScrollPrev]);
 
+  const hasAParentSection = data.some((person) => Boolean(person.label.parentId));
+
   return (
     <StyledWrapper id={canvasWrapperId}>
       <StyledInnerWrapper ref={ref}>
         <StyledSpan position="left" ref={refLeft} />
         <Loader isLoading={isLoading} position="left" />
         <StyledCanvas ref={canvasRef} />
-        <Tiles data={data} zoom={zoom} onTileClick={onTileClick} />
+        <Tiles
+          data={data}
+          zoom={zoom}
+          onTileClick={onTileClick}
+          hasAParentSection={hasAParentSection}
+        />
         <StyledSpan ref={refRight} position="right" />
         <Loader isLoading={isLoading} position="right" />
       </StyledInnerWrapper>

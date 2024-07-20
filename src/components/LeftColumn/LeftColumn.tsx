@@ -2,7 +2,12 @@ import { FC, useState } from "react";
 import { useLanguage } from "@/context/LocaleProvider";
 import Icon from "../Icon";
 import PaginationButton from "../PaginationButton/PaginationButton";
-import { StyledInput, StyledInputWrapper, StyledLeftColumnHeader, StyledWrapper } from "./styles";
+import {
+  StyledInput,
+  StyledInputWrapper,
+  StyledLeftColumnHeader,
+  StyledLeftColumnWrapper
+} from "./styles";
 import { LeftColumnProps } from "./types";
 import LeftColumnItem from "./LeftColumnItem/LeftColumnItem";
 
@@ -15,7 +20,8 @@ const LeftColumn: FC<LeftColumnProps> = ({
   pagesAmount,
   searchInputValue,
   onSearchInputChange,
-  onItemClick
+  onItemClick,
+  onTextButtonClick
 }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const { search } = useLanguage();
@@ -23,7 +29,7 @@ const LeftColumn: FC<LeftColumnProps> = ({
   const toggleFocus = () => setIsInputFocused((prev) => !prev);
 
   return (
-    <StyledWrapper>
+    <StyledLeftColumnWrapper>
       <StyledLeftColumnHeader>
         <StyledInputWrapper isFocused={isInputFocused}>
           <StyledInput
@@ -44,15 +50,20 @@ const LeftColumn: FC<LeftColumnProps> = ({
           pagesAmount={pagesAmount}
         />
       </StyledLeftColumnHeader>
-      {data.map((item, index) => (
-        <LeftColumnItem
-          id={item.id}
-          item={item.label}
-          key={item.id}
-          rows={rows[index]}
-          onItemClick={onItemClick}
-        />
-      ))}
+      {data.map((item, index) => {
+        console.log("in data map: ", item);
+        return (
+          <LeftColumnItem
+            id={item.id}
+            item={item.label}
+            key={item.id}
+            rows={rows[index]}
+            onItemClick={onItemClick}
+            onTextButtonClick={item.label.parentId ? onTextButtonClick : undefined}
+            hasAParent={item.label.parentId !== null}
+          />
+        );
+      })}
       <PaginationButton
         intent="next"
         isVisible={pageNum !== pagesAmount - 1}
@@ -61,7 +72,7 @@ const LeftColumn: FC<LeftColumnProps> = ({
         pageNum={pageNum}
         pagesAmount={pagesAmount}
       />
-    </StyledWrapper>
+    </StyledLeftColumnWrapper>
   );
 };
 

@@ -21,8 +21,83 @@ export const Wrapper = styled.div<TopbarProps>`
   align-items: center;
   height: ${({ theme }) => theme.navHeight};
   padding: 0.625rem 1rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.BASIC_DECORATION_GRAY};
   z-index: 3;
+`;
+
+export const LeftSide = styled.div`
+  /* display: flex; */
+  gap: 1.875rem;
+`;
+
+export const RightSide = styled.div`
+  display: flex;
+  gap: 1.3rem;
+`;
+
+export const TodayButton = styled.button`
+  width: 104px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid ${({ theme }) => theme.colors.INPUT_FIELD};
+  background-color: ${({ theme }) => theme.colors.MAIN_6};
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1.5rem;
+  cursor: pointer;
+`;
+
+export const DownloadButton = styled.button`
+  width: 108px;
+  height: 40px;
+  border-radius: 6px;
+  border: 2px solid ${({ theme }) => theme.colors.BRANDING};
+  background-color: ${({ theme }) => theme.colors.MAIN_6};
+  font-weight: 600;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.BRANDING};
+  line-height: 1.5rem;
+  cursor: pointer;
+`;
+
+export const AddEventButton = styled.button`
+  width: 108px;
+  height: 40px;
+  border-radius: 6px;
+  border: 2px solid ${({ theme }) => theme.colors.BRANDING};
+  background-color: ${({ theme }) => theme.colors.BRANDING};
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.MAIN_6};
+  cursor: pointer;
+  line-height: 1.5rem;
+  cursor: pointer;
+`;
+
+export const Spacer = styled.div`
+  height: 40px;
+  width: 1px;
+  border-right: 1px solid ${({ theme }) => theme.colors.INPUT_FIELD};
+`;
+
+export const RangeSelector = styled.select`
+  width: 160px;
+  height: 40px;
+  border-radius: 6px;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.INPUT_FIELD};
+  font-weight: 600;
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  /* appearance: none; -- hides arrow */
+`;
+
+export const RangeOption = styled.option`
+  padding: 8px;
+  background-color: white;
+  cursor: pointer;
 `;
 
 export const NavigationWrapper = styled.div`

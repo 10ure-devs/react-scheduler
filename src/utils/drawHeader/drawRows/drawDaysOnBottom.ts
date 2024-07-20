@@ -34,12 +34,6 @@ export const drawDaysOnBottom = (ctx: CanvasRenderingContext2D, cols: number, st
       isBottomRow: true,
       fillStyle: getBoxFillStyle({ isCurrent: day.isCurrentDay, isBusinessDay: day.isBusinessDay }),
       topText: {
-        y: dayNameYPos,
-        label: day.dayName.toUpperCase(),
-        font: fonts.bottomRow.name,
-        color: getTextStyle({ isCurrent: day.isCurrentDay, isBusinessDay: day.isBusinessDay })
-      },
-      bottomText: {
         y: dayNumYPos,
         label: `${day.dayOfMonth}`,
         font: fonts.bottomRow.number,
@@ -48,6 +42,13 @@ export const drawDaysOnBottom = (ctx: CanvasRenderingContext2D, cols: number, st
           isBusinessDay: day.isBusinessDay,
           variant: "bottomRow"
         })
+      },
+      bottomText: {
+        y: dayNameYPos,
+        // label: day.dayName.toUpperCase(),
+        label: day.dayName.charAt(0).toUpperCase() + day.dayName.slice(1).toLowerCase(),
+        font: fonts.bottomRow.name,
+        color: getTextStyle({ isCurrent: day.isCurrentDay, isBusinessDay: day.isBusinessDay })
       }
     });
 

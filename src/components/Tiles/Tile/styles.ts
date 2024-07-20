@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { leftColumnWidth, tileHeight } from "@/constants";
-import { marginPaddingReset, truncate } from "@/styles";
+import { marginPaddingReset, theme, truncate } from "@/styles";
 import { StyledTextProps } from "./types";
 
 export const StyledTileWrapper = styled.button`

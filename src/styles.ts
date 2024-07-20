@@ -1,4 +1,11 @@
 import styled, { createGlobalStyle, type DefaultTheme } from "styled-components";
+import {
+  PrimaryColorPalette,
+  BrandColorPalette,
+  TextAndShapesPalette,
+  BackgroundColorPalette,
+  StatusColorPalette
+} from "./designSystem"; // Adjust the import path as necessary
 
 export const prefixId = "reactSchedulerOutsideWrapper";
 
@@ -31,7 +38,12 @@ type ColorType =
   | "blue400"
   | "blue200"
   | "red400"
-  | "white";
+  | "white"
+  | keyof typeof PrimaryColorPalette
+  | keyof typeof BrandColorPalette
+  | keyof typeof TextAndShapesPalette
+  | keyof typeof BackgroundColorPalette
+  | keyof typeof StatusColorPalette;
 
 export type Theme = {
   colors: Record<ColorType, string>;
@@ -50,7 +62,12 @@ export const theme: DefaultTheme = {
     blue400: "#0A11EB",
     blue200: "#E6F3FF",
     red400: "#EF4444",
-    white: "#FFFFFF"
+    white: "#FFFFFF",
+    ...PrimaryColorPalette,
+    ...BrandColorPalette,
+    ...TextAndShapesPalette,
+    ...BackgroundColorPalette,
+    ...StatusColorPalette
   }
 };
 
@@ -66,8 +83,9 @@ white-space: nowrap;
 `;
 
 export const StyledSchedulerFrame = styled.div`
-  margin: 10rem 10rem;
+  /* margin: 10rem 10rem; */
   position: relative;
-  width: 40vw;
+  /* width: 40vw; */
+  width: 70vw;
   height: 40vh;
 `;
