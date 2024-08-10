@@ -22,6 +22,7 @@ const initialTooltipData: TooltipData = {
 
 export const Calendar: FC<CalendarProps> = ({
   data,
+  isFullscreen,
   onTileClick,
   onItemClick,
   onTextButtonClick,
@@ -82,13 +83,15 @@ export const Calendar: FC<CalendarProps> = ({
       300
     )
   );
+
   const debouncedFilterData = useRef(
     debounce((dataToFilter: SchedulerData, enteredSearchPhrase: string) => {
       reset();
       setFilteredData(
-        dataToFilter.filter((item) =>
-          item.label.title.toLowerCase().includes(enteredSearchPhrase.toLowerCase())
-        )
+        dataToFilter.filter((item) => {
+          console.log("in filter - item:", item);
+          return item.label.title.toLowerCase().includes(enteredSearchPhrase.toLowerCase());
+        })
       );
     }, 500)
   );
@@ -132,6 +135,7 @@ export const Calendar: FC<CalendarProps> = ({
   return (
     <StyledOuterWrapper>
       <LeftColumn
+        isFullscreen={isFullscreen ?? false}
         data={page}
         pageNum={currentPageNum}
         pagesAmount={pagesAmount}

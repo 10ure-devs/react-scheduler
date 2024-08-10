@@ -15,7 +15,7 @@ function App() {
     yearsCovered: 0,
     startDate: undefined,
     maxRecordsPerPage: 50,
-    isFullscreen: true
+    isFullscreen: false
   });
 
   const { peopleCount, projectsPerYear, yearsCovered, isFullscreen, maxRecordsPerPage } = values;
@@ -31,8 +31,7 @@ function App() {
   const handleRangeChange = useCallback((range: ParsedDatesRange) => {
     setRange(range);
   }, []);
-  console.log("collapsedParentIds: ", collapsedParentIds);
-  console.log("mocked: ", mocked);
+
   const parentFilteredData = useMemo(
     () =>
       mocked.filter((item) => {
@@ -48,7 +47,6 @@ function App() {
         return {
           ...item,
           data: item.data.filter((project) => {
-            console.log("project: ", project);
             return (
               dayjs(project.startDate).isBetween(range.startDate, range.endDate) ||
               dayjs(project.endDate).isBetween(range.startDate, range.endDate) ||
@@ -73,7 +71,6 @@ function App() {
     );
 
   const handleHeaderClick = (data: SchedulerItemClickData) => {
-    console.log("Header clicked: ", data);
     if (collapsedParentIds.includes(data.id)) {
       setCollapsedParentIds(collapsedParentIds.filter((id) => id !== data.id));
     } else {
@@ -90,6 +87,7 @@ function App() {
       <ConfigPanel values={values} onSubmit={setValues} />
       {isFullscreen ? (
         <Scheduler
+          isFullscreen={true}
           startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
           onRangeChange={handleRangeChange}
           data={filteredData}
@@ -105,6 +103,7 @@ function App() {
       ) : (
         <StyledSchedulerFrame>
           <Scheduler
+            isFullscreen={false}
             startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
             onRangeChange={handleRangeChange}
             isLoading={false}

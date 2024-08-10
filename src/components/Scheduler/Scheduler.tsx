@@ -14,6 +14,7 @@ const Scheduler = ({
   data,
   config,
   startDate,
+  isFullscreen,
   onRangeChange,
   onTileClick,
   onFilterData,
@@ -68,10 +69,12 @@ const Scheduler = ({
             onClearFilterData={onClearFilterData}>
             <StyledOutsideWrapper
               showScroll={!!data.length}
+              isFullscreen={isFullscreen}
               id={outsideWrapperId}
               ref={outsideWrapperRef}>
               <StyledInnerWrapper>
                 <Calendar
+                  isFullscreen={isFullscreen ?? false}
                   data={data}
                   onTileClick={onTileClick}
                   topBarWidth={topBarWidth ?? 0}

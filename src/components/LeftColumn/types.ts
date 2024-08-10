@@ -1,6 +1,7 @@
 import { PaginatedSchedulerData, SchedulerItemClickData } from "@/types/global";
 
 export type LeftColumnProps = {
+  isFullscreen: boolean;
   data: PaginatedSchedulerData;
   rows: number[];
   pageNum: number;
@@ -15,4 +16,8 @@ export type LeftColumnProps = {
 
 export type StyledInputWrapperProps = {
   isFocused: boolean;
+};
+
+export type StyledLeftColumnWrapperProps = {
+  isFullscreen: boolean;
 };

@@ -9,6 +9,7 @@ import { ParsedDatesRange } from "@/utils/getDatesRange";
 export type SchedulerProps = {
   data: SchedulerData;
   isLoading?: boolean;
+  isFullscreen: boolean;
   config?: Config;
   startDate?: string;
   onRangeChange?: (range: ParsedDatesRange) => void;
@@ -23,4 +24,5 @@ export type SchedulerProps = {
 
 export type StyledOutsideWrapperProps = {
   showScroll: boolean;
+  isFullscreen: boolean;
 };

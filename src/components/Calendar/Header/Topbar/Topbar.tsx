@@ -38,9 +38,8 @@ const Topbar: FC<TopbarProps> = ({ width, handleClickDownload, handleClickAddEve
   } = useCalendar();
   const { colors } = useTheme();
   const { filterButtonState = -1, zoom: initialZoom } = config;
-  console.log("initialZoom: ", initialZoom);
+
   const handleRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("value", e.target.value);
     if (e.target.value === "week") {
       zoomIn(); // Assuming zoomIn sets zoom to 1
     } else if (e.target.value === "month") {

@@ -52,7 +52,7 @@ export type PaginatedSchedulerRow = {
 export type SchedulerRowLabel = {
   icon: string;
   title: string;
-  subtitle: string;
+  subtitle: string | null;
   /**
    * Parent id of item - if it rolls up to another row
    */
@@ -93,6 +93,10 @@ export type SchedulerProjectData = {
    * Background color of the tile, given in rgb color model. If not given, default color (rgb(114, 141,226 )) is set. Optional
    */
   bgColor?: string;
+  /**
+   * Cost of the current project
+   */
+  cost?: string | number;
 };
 
 export type Day = {

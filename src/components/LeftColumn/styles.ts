@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { leftColumnWidth } from "@/constants";
-import { StyledInputWrapperProps } from "./types";
+import { StyledInputWrapperProps, StyledLeftColumnWrapperProps } from "./types";
 
-export const StyledLeftColumnWrapper = styled.div`
+export const StyledLeftColumnWrapper = styled.div<StyledLeftColumnWrapperProps>`
   min-width: ${leftColumnWidth + "px"};
   max-width: ${leftColumnWidth + "px"};
-  min-height: 100vh;
+  min-height: ${({ isFullscreen }) => (isFullscreen ? "100vh" : "auto")};
+  /* min-height: 100vh; */
   position: sticky;
   left: 0;
   background-color: ${({ theme }) => theme.colors.white};

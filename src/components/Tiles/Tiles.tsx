@@ -7,7 +7,6 @@ const Tiles: FC<TilesProps> = ({ data, zoom, hasAParentSection, onTileClick }) =
     let rows = 0;
     return data
       .map((person, personIndex) => {
-        console.log("person: ", person);
         if (personIndex > 0) {
           rows += Math.max(data[personIndex - 1].data.length, 1);
         }
@@ -25,7 +24,6 @@ const Tiles: FC<TilesProps> = ({ data, zoom, hasAParentSection, onTileClick }) =
       })
       .flat(2);
   }, [data, onTileClick, zoom]);
-  console.log(`Tiles ${hasAParentSection}: `, data);
   return <div>{placeTiles()}</div>;
 };
 

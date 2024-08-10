@@ -14,6 +14,7 @@ import LeftColumnItem from "./LeftColumnItem/LeftColumnItem";
 const LeftColumn: FC<LeftColumnProps> = ({
   data,
   rows,
+  isFullscreen,
   onLoadNext,
   onLoadPrevious,
   pageNum,
@@ -29,7 +30,7 @@ const LeftColumn: FC<LeftColumnProps> = ({
   const toggleFocus = () => setIsInputFocused((prev) => !prev);
 
   return (
-    <StyledLeftColumnWrapper>
+    <StyledLeftColumnWrapper isFullscreen={isFullscreen ?? false}>
       <StyledLeftColumnHeader>
         <StyledInputWrapper isFocused={isInputFocused}>
           <StyledInput
@@ -51,7 +52,6 @@ const LeftColumn: FC<LeftColumnProps> = ({
         />
       </StyledLeftColumnHeader>
       {data.map((item, index) => {
-        console.log("in data map: ", item);
         return (
           <LeftColumnItem
             id={item.id}
