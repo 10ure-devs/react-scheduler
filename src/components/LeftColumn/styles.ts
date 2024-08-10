@@ -10,7 +10,7 @@ export const StyledLeftColumnWrapper = styled.div<StyledLeftColumnWrapperProps>`
   position: sticky;
   left: 0;
   background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0px 4px 15px rgba(39, 55, 75, 0.16);
+  box-shadow: 4px 0px 15px rgba(39, 55, 75, 0.16);
   z-index: 2;
 `;
 
