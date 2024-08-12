@@ -107,7 +107,7 @@ export const Calendar: FC<CalendarProps> = ({
           const childrenIds = dataToFilter
             .filter((maybeChild) => maybeChild.label.parentId === item.id)
             .map((child) => child.id);
-          console.log(`children of ${item.label.title}: `, childrenIds);
+          // console.log(`children of ${item.label.title}: `, childrenIds);
           // If any child is a match, we want to display the parent too
           const isAnyChildMatch =
             childrenIds.length &&
