@@ -12,6 +12,9 @@ export type SchedulerProps = {
   isFullscreen: boolean;
   config?: Config;
   startDate?: string;
+  minHeight?: string;
+  emptyText?: string;
+  emptyTextTwo?: string;
   onRangeChange?: (range: ParsedDatesRange) => void;
   onTileClick?: (data: SchedulerProjectData) => void;
   onFilterData?: () => void;
@@ -25,4 +28,5 @@ export type SchedulerProps = {
 export type StyledOutsideWrapperProps = {
   showScroll: boolean;
   isFullscreen: boolean;
+  minHeight?: string;
 };

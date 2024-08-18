@@ -10,6 +10,7 @@ export const StyledOutsideWrapper = styled.div<StyledOutsideWrapperProps>`
   display: flex;
   overflow-x: ${({ showScroll }) => (showScroll ? "scroll" : "hidden")};
   background-color: white;
+  min-height: ${({ minHeight }) => minHeight || "500px"};
 `;
 export const StyledInnerWrapper = styled.div`
   position: relative;

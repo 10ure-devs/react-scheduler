@@ -28,7 +28,9 @@ export const Calendar: FC<CalendarProps> = ({
   onTextButtonClick,
   topBarWidth,
   handleClickDownload,
-  handleClickAddEvent
+  handleClickAddEvent,
+  emptyText,
+  emptyTextTwo
 }) => {
   const [tooltipData, setTooltipData] = useState<TooltipData>(initialTooltipData);
   const [filteredData, setFilteredData] = useState(data);
@@ -198,7 +200,7 @@ export const Calendar: FC<CalendarProps> = ({
             onTileClick={onTileClick}
           />
         ) : (
-          <EmptyBox />
+          <EmptyBox emptyText={emptyText} emptyTextTwo={emptyTextTwo} />
         )}
         {isVisible && tooltipData?.resourceIndex > -1 && (
           <Tooltip tooltipData={tooltipData} zoom={zoom} />

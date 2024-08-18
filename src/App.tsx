@@ -41,6 +41,7 @@ function App() {
     [mocked, collapsedParentIds]
   );
 
+  // const filteredData = [];
   const filteredData = useMemo(
     () =>
       parentFilteredData.map((item) => {
@@ -70,7 +71,10 @@ function App() {
       `Item ${data.title} - ${data.subtitle} was clicked. \n==============\nStart date: ${data.startDate} \n==============\nEnd date: ${data.endDate}\n==============\nOccupancy: ${data.occupancy}`
     );
 
+  console.log("");
+
   const handleHeaderClick = (data: SchedulerItemClickData) => {
+    console.log("Header clicked: ", data);
     if (collapsedParentIds.includes(data.id)) {
       setCollapsedParentIds(collapsedParentIds.filter((id) => id !== data.id));
     } else {
@@ -96,6 +100,7 @@ function App() {
           onFilterData={handleFilterData}
           config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
           onItemClick={handleHeaderClick}
+          minHeight="500px"
           onTextButtonClick={handleTextButtonClick}
           handleClickDownload={handleClickDownload}
           handleClickAddEvent={handleClickAddEvent}
@@ -109,12 +114,15 @@ function App() {
             isLoading={false}
             config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
             data={filteredData}
+            minHeight="500px"
             onTileClick={handleTileClick}
             onTextButtonClick={handleTextButtonClick}
             onFilterData={handleFilterData}
             onItemClick={handleHeaderClick}
             handleClickDownload={handleClickDownload}
             handleClickAddEvent={handleClickAddEvent}
+            emptyText={"No Schedules"}
+            emptyTextTwo={"Click Add Event to add a schedule"}
           />
         </StyledSchedulerFrame>
       )}

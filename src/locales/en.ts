@@ -1,5 +1,6 @@
 export const en = {
-  feelingEmpty: "I feel so empty...",
+  feelingEmptyOne: `No schedules found.`,
+  feelingEmptyTwo: `Click "Add Event" to add your first schedule.`,
   free: "Free",
   loadNext: "Next",
   loadPrevious: "Previous",
