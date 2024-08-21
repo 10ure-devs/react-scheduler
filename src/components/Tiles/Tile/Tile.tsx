@@ -51,8 +51,8 @@ const Tile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
         </StyledTextWrapper>
         {data.crewCount !== undefined && (
           <StyledCrewCountWrapper>
-            <Icon iconName="crewIcon" width="16" height="16" />
-            <StyledText underline>{`${data.crewCount} Scheduled Crew`}</StyledText>
+            <Icon iconName="crewIcon" width="14" height="14" />
+            <StyledText fontSize="10px" underline>{`${data.crewCount} Scheduled Crew`}</StyledText>
           </StyledCrewCountWrapper>
         )}
       </StyledInnerWrapper>

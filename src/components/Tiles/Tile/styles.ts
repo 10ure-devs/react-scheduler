@@ -58,6 +58,11 @@ export const StyledText = styled.p<StyledTextProps>`
       margin: 0 3px;
     }
   }
+  ${({ fontSize }) =>
+    fontSize &&
+    `
+    font-size: ${fontSize};
+  `}
 `;
 
 export const StyledDescription = styled.p`

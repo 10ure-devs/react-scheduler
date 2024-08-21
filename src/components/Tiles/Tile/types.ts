@@ -11,4 +11,5 @@ export type TileProps = {
 export type StyledTextProps = {
   bold?: boolean;
   underline?: boolean;
+  fontSize?: string;
 };
