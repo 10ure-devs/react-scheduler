@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TextAndShapesPalette } from "@/designSystem";
 import { StyledOutsideWrapperProps } from "./types";
 
 export const StyledOutsideWrapper = styled.div<StyledOutsideWrapperProps>`
@@ -10,6 +11,8 @@ export const StyledOutsideWrapper = styled.div<StyledOutsideWrapperProps>`
   display: flex;
   overflow-x: ${({ showScroll }) => (showScroll ? "scroll" : "hidden")};
   background-color: white;
+  border: 1px solid ${TextAndShapesPalette.PLACEHOLDER};
+  border-radius: 8px;
   min-height: ${({ minHeight }) => minHeight || "500px"};
 `;
 export const StyledInnerWrapper = styled.div`

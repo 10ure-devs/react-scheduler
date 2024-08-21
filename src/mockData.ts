@@ -18,6 +18,7 @@ export const mockData: SchedulerData = [
         endDate: new Date("2024-08-28T13:06:00.000Z"),
         title: "Seaward Explorer",
         subtitle: "POLLUTION CONTROL VESSEL\r",
+        crewCount: 3,
         description: "Test Work",
         bgColor: "#3CACEB",
         cost: "$0.00"
@@ -29,6 +30,7 @@ export const mockData: SchedulerData = [
         endDate: new Date("2024-08-17T13:00:00.000Z"),
         title: "Seaward Explorer",
         subtitle: "POLLUTION CONTROL VESSEL\r",
+        crewCount: 2,
         description: "This Is A Test",
         bgColor: "#3CACEB",
         cost: "$0.00"
@@ -40,6 +42,7 @@ export const mockData: SchedulerData = [
         endDate: new Date("2024-07-23T09:56:00.000Z"),
         title: "Seaward Explorer",
         subtitle: "POLLUTION CONTROL VESSEL\r",
+        crewCount: 0,
         description: "Testing",
         bgColor: "#3CACEB",
         cost: "$0.00"
@@ -152,6 +155,7 @@ export const mockData: SchedulerData = [
         endDate: new Date("2024-08-18T13:00:00.000Z"),
         title: "Seaward Endeavor",
         subtitle: "POLLUTION CONTROL VESSEL\r",
+        crewCount: 1,
         description: "This Is A Test To Add New Vessel Event",
         bgColor: "#3CACEB",
         cost: "$12.00"

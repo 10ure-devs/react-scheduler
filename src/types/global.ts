@@ -97,6 +97,10 @@ export type SchedulerProjectData = {
    * Cost of the current project
    */
   cost?: string | number;
+  /**
+   * Crew count for vessel live
+   */
+  crewCount?: number;
 };
 
 export type Day = {

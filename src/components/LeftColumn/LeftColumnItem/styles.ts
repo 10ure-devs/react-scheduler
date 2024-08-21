@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { theme } from "@/styles";
 import { boxHeight } from "@/constants";
-import { StyledLeftColumnItemWrapperProps, StyledTextProps } from "./types";
+import { TextAndShapesPalette } from "@/designSystem";
+import { StyledLeftColumnItemWrapperProps, StyledImageProps, StyledTextProps } from "./types";
 
 export const StyledWrapper = styled.div<StyledLeftColumnItemWrapperProps>`
   display: flex;
@@ -24,12 +25,17 @@ export const StyledInnerWrapper = styled.div`
   align-items: center;
 `;
 
-export const StyledImageWrapper = styled.div`
+export const StyledImageWrapper = styled.div<StyledImageProps>`
   margin-right: 0.5rem;
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 50%;
   overflow: hidden;
+  ${({ showBorder }) =>
+    showBorder &&
+    `
+    border: 1px solid ${TextAndShapesPalette.PLACEHOLDER};
+  `}
   flex-shrink: 0;
 `;
 export const StyledImage = styled.img`
