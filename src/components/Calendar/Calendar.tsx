@@ -20,7 +20,15 @@ const initialTooltipData: TooltipData = {
   }
 };
 
-export const Calendar: FC<CalendarProps> = ({ data, onTileClick, onItemClick, topBarWidth }) => {
+export const Calendar: FC<CalendarProps> = ({
+  data,
+  onTileClick,
+  onItemClick,
+  onTextButtonClick,
+  topBarWidth,
+  handleClickDownload,
+  handleClickAddEvent
+}) => {
   const [tooltipData, setTooltipData] = useState<TooltipData>(initialTooltipData);
   const [filteredData, setFilteredData] = useState(data);
   const [isVisible, setIsVisible] = useState(false);
@@ -99,8 +107,9 @@ export const Calendar: FC<CalendarProps> = ({ data, onTileClick, onItemClick, to
   }, []);
 
   useEffect(() => {
-    const handleMouseOver = (e: MouseEvent) =>
-      debouncedHandleMouseOver.current(e, startDate, rowsPerItem, projectsPerPerson, zoom);
+    const handleMouseOver = () => {};
+    // const handleMouseOver = (e: MouseEvent) =>
+    //   debouncedHandleMouseOver.current(e, startDate, rowsPerItem, projectsPerPerson, zoom);
     const gridArea = gridRef.current;
 
     if (!gridArea) return;
@@ -132,9 +141,15 @@ export const Calendar: FC<CalendarProps> = ({ data, onTileClick, onItemClick, to
         searchInputValue={searchPhrase}
         onSearchInputChange={handleSearch}
         onItemClick={onItemClick}
+        onTextButtonClick={onTextButtonClick}
       />
       <StyledInnerWrapper>
-        <Header zoom={zoom} topBarWidth={topBarWidth} />
+        <Header
+          zoom={zoom}
+          topBarWidth={topBarWidth}
+          handleClickDownload={handleClickDownload}
+          handleClickAddEvent={handleClickAddEvent}
+        />
         {data.length ? (
           <Grid
             data={page}

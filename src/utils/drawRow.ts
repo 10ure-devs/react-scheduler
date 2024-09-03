@@ -40,18 +40,16 @@ export const drawRow = (config: DrawRowConfig) => {
     ctx.fillRect(x, y, width, height);
     ctx.strokeRect(x + 0.5, y + 0.5, width, height);
 
+    // Draw topText (day number) first
     ctx.font = topText.font;
-
-    const dayNameXPos = x + width / 2 - ctx.measureText(topText.label).width / 2;
-
+    const dayNumXPos = x + width / 2 - ctx.measureText(topText.label).width / 2;
     ctx.fillStyle = topText.color;
-    ctx.fillText(topText.label, dayNameXPos, topText.y);
+    ctx.fillText(topText.label, dayNumXPos, topText.y);
 
+    // Draw bottomText (day name) second
     ctx.font = bottomText.font;
-
-    const dayNumXPos = x + width / 2 - ctx.measureText(bottomText.label).width / 2;
-
+    const dayNameXPos = x + width / 2 - ctx.measureText(bottomText.label).width / 2;
     ctx.fillStyle = bottomText.color;
-    ctx.fillText(bottomText.label, dayNumXPos, bottomText.y);
+    ctx.fillText(bottomText.label, dayNameXPos, bottomText.y);
   }
 };

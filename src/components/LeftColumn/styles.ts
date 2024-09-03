@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { leftColumnWidth } from "@/constants";
 import { StyledInputWrapperProps } from "./types";
 
-export const StyledWrapper = styled.div`
+export const StyledLeftColumnWrapper = styled.div`
   min-width: ${leftColumnWidth + "px"};
   max-width: ${leftColumnWidth + "px"};
   min-height: 100vh;

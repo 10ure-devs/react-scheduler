@@ -5,9 +5,10 @@ export const headerMonthHeight = 24;
 export const headerWeekHeight = 16;
 export const headerDayHeight = 40;
 export const headerHeight = headerDayHeight + headerWeekHeight + headerMonthHeight;
+// export const headerHeight = headerDayHeight + headerMonthHeight;
 export const weekWidth = 84;
-export const boxHeight = 56;
-export const leftColumnWidth = 196;
+export const boxHeight = 65;
+export const leftColumnWidth = 300;
 export const singleDayWidth = 12;
 export const weeksInYear = 52;
 export const navHeight = 44;
@@ -16,19 +17,19 @@ export const fonts = {
   topRow: "600 14px Inter",
   middleRow: "400 10px Inter",
   bottomRow: {
-    name: "600 14px Inter",
-    number: "600 10px Inter"
+    name: "600 9px Inter",
+    number: "600 13px Inter"
   }
 };
 export const screenWidthMultiplier = 3;
-export const dayNameYoffset = 1.6;
-export const dayNumYOffset = 4.5;
+export const dayNameYoffset = 4.5;
+export const dayNumYOffset = 1.6; //
 export const monthsInYear = 12;
 export const canvasHeaderWrapperId = "reactSchedulerCanvasHeaderWrapper";
 export const canvasWrapperId = "reactSchedulerCanvasWrapper";
 export const outsideWrapperId = prefixId;
 export const tileYOffset = 4;
-export const tileHeight = 48;
+export const tileHeight = 58;
 export const formFieldsIds = {
   peopleCount: "peopleCount",
   projectsPerYear: "projectsPerYear",

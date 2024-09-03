@@ -34,6 +34,7 @@ export type SchedulerData = SchedulerRow[];
 
 export type SchedulerRow = {
   id: string;
+  // parentId?: string | null; // if it rolls up to another row
   label: SchedulerRowLabel;
   data: SchedulerProjectData[];
 };
@@ -52,7 +53,13 @@ export type SchedulerRowLabel = {
   icon: string;
   title: string;
   subtitle: string;
+  /**
+   * Parent id of item - if it rolls up to another row
+   */
+  parentId?: string | null;
+  id?: string;
 };
+
 export type SchedulerProjectData = {
   /**
    * Unique Id of item

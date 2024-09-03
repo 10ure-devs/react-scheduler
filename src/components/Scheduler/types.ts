@@ -16,6 +16,9 @@ export type SchedulerProps = {
   onFilterData?: () => void;
   onClearFilterData?: () => void;
   onItemClick?: (data: SchedulerItemClickData) => void;
+  onTextButtonClick?: (data: SchedulerItemClickData) => void;
+  handleClickDownload?: () => void;
+  handleClickAddEvent?: () => void;
 };
 
 export type StyledOutsideWrapperProps = {

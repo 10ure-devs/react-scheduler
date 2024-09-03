@@ -19,6 +19,9 @@ const Scheduler = ({
   onFilterData,
   onClearFilterData,
   onItemClick,
+  onTextButtonClick,
+  handleClickDownload,
+  handleClickAddEvent,
   isLoading
 }: SchedulerProps) => {
   const appConfig: Config = useMemo(
@@ -73,6 +76,9 @@ const Scheduler = ({
                   onTileClick={onTileClick}
                   topBarWidth={topBarWidth ?? 0}
                   onItemClick={onItemClick}
+                  onTextButtonClick={onTextButtonClick}
+                  handleClickDownload={handleClickDownload}
+                  handleClickAddEvent={handleClickAddEvent}
                 />
               </StyledInnerWrapper>
             </StyledOutsideWrapper>

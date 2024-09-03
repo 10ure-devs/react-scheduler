@@ -4,7 +4,10 @@ export type LeftColumnItemProps = {
   id: string;
   item: SchedulerRowLabel;
   rows: number;
+  hasAParent: boolean;
   onItemClick?: (data: SchedulerItemClickData) => void;
+  textButtonLabel?: string;
+  onTextButtonClick?: (data: SchedulerItemClickData) => void;
 };
 
 export type StyledTextProps = {
@@ -14,4 +17,5 @@ export type StyledTextProps = {
 export type StyledLeftColumnItemWrapperProps = {
   rows: number;
   clickable: boolean;
+  hasAParent: boolean;
 };
