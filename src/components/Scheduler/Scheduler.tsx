@@ -14,6 +14,7 @@ const Scheduler = ({
   data,
   config,
   startDate,
+  isFullscreen,
   onRangeChange,
   onTileClick,
   onFilterData,
@@ -22,7 +23,10 @@ const Scheduler = ({
   onTextButtonClick,
   handleClickDownload,
   handleClickAddEvent,
-  isLoading
+  isLoading,
+  minHeight,
+  emptyText,
+  emptyTextTwo
 }: SchedulerProps) => {
   const appConfig: Config = useMemo(
     () => ({
@@ -68,10 +72,13 @@ const Scheduler = ({
             onClearFilterData={onClearFilterData}>
             <StyledOutsideWrapper
               showScroll={!!data.length}
+              isFullscreen={isFullscreen}
               id={outsideWrapperId}
-              ref={outsideWrapperRef}>
+              ref={outsideWrapperRef}
+              minHeight={minHeight}>
               <StyledInnerWrapper>
                 <Calendar
+                  isFullscreen={isFullscreen ?? false}
                   data={data}
                   onTileClick={onTileClick}
                   topBarWidth={topBarWidth ?? 0}
@@ -79,6 +86,8 @@ const Scheduler = ({
                   onTextButtonClick={onTextButtonClick}
                   handleClickDownload={handleClickDownload}
                   handleClickAddEvent={handleClickAddEvent}
+                  emptyText={emptyText}
+                  emptyTextTwo={emptyTextTwo}
                 />
               </StyledInnerWrapper>
             </StyledOutsideWrapper>

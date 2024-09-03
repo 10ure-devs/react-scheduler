@@ -14,7 +14,6 @@ const Header: FC<HeaderProps> = ({
   handleClickDownload,
   handleClickAddEvent
 }) => {
-  console.log("Header - zoom: ", zoom);
   const { week } = useLanguage();
   const { date, cols, dayOfYear, startDate } = useCalendar();
   const canvasRef = useRef<HTMLCanvasElement>(null);

@@ -12,4 +12,5 @@ export const StyledInnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   contain: paint;
+  min-height: 500px;
 `;

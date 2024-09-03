@@ -15,7 +15,7 @@ function App() {
     yearsCovered: 0,
     startDate: undefined,
     maxRecordsPerPage: 50,
-    isFullscreen: true
+    isFullscreen: false
   });
 
   const { peopleCount, projectsPerYear, yearsCovered, isFullscreen, maxRecordsPerPage } = values;
@@ -31,8 +31,7 @@ function App() {
   const handleRangeChange = useCallback((range: ParsedDatesRange) => {
     setRange(range);
   }, []);
-  console.log("collapsedParentIds: ", collapsedParentIds);
-  console.log("mocked: ", mocked);
+
   const parentFilteredData = useMemo(
     () =>
       mocked.filter((item) => {
@@ -42,13 +41,13 @@ function App() {
     [mocked, collapsedParentIds]
   );
 
+  // const filteredData = [];
   const filteredData = useMemo(
     () =>
       parentFilteredData.map((item) => {
         return {
           ...item,
           data: item.data.filter((project) => {
-            console.log("project: ", project);
             return (
               dayjs(project.startDate).isBetween(range.startDate, range.endDate) ||
               dayjs(project.endDate).isBetween(range.startDate, range.endDate) ||
@@ -72,6 +71,8 @@ function App() {
       `Item ${data.title} - ${data.subtitle} was clicked. \n==============\nStart date: ${data.startDate} \n==============\nEnd date: ${data.endDate}\n==============\nOccupancy: ${data.occupancy}`
     );
 
+  console.log("");
+
   const handleHeaderClick = (data: SchedulerItemClickData) => {
     console.log("Header clicked: ", data);
     if (collapsedParentIds.includes(data.id)) {
@@ -90,6 +91,7 @@ function App() {
       <ConfigPanel values={values} onSubmit={setValues} />
       {isFullscreen ? (
         <Scheduler
+          isFullscreen={true}
           startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
           onRangeChange={handleRangeChange}
           data={filteredData}
@@ -98,6 +100,7 @@ function App() {
           onFilterData={handleFilterData}
           config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
           onItemClick={handleHeaderClick}
+          minHeight="500px"
           onTextButtonClick={handleTextButtonClick}
           handleClickDownload={handleClickDownload}
           handleClickAddEvent={handleClickAddEvent}
@@ -105,17 +108,21 @@ function App() {
       ) : (
         <StyledSchedulerFrame>
           <Scheduler
+            isFullscreen={false}
             startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
             onRangeChange={handleRangeChange}
             isLoading={false}
             config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
             data={filteredData}
+            minHeight="500px"
             onTileClick={handleTileClick}
             onTextButtonClick={handleTextButtonClick}
             onFilterData={handleFilterData}
             onItemClick={handleHeaderClick}
             handleClickDownload={handleClickDownload}
             handleClickAddEvent={handleClickAddEvent}
+            emptyText={"No Schedules"}
+            emptyTextTwo={"Click Add Event to add a schedule"}
           />
         </StyledSchedulerFrame>
       )}

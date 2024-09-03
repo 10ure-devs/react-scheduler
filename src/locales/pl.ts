@@ -1,5 +1,6 @@
 export const pl = {
-  feelingEmpty: "Czuję się taki pusty...",
+  feelingEmptyOne: "Czuję się taki pusty...",
+  feelingEmptyTwo: "Kliknij Dodaj Event, aby dodać nowy event",
   free: "Wolne",
   loadNext: "Następne",
   loadPrevious: "Poprzednie",

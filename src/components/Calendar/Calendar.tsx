@@ -22,12 +22,15 @@ const initialTooltipData: TooltipData = {
 
 export const Calendar: FC<CalendarProps> = ({
   data,
+  isFullscreen,
   onTileClick,
   onItemClick,
   onTextButtonClick,
   topBarWidth,
   handleClickDownload,
-  handleClickAddEvent
+  handleClickAddEvent,
+  emptyText,
+  emptyTextTwo
 }) => {
   const [tooltipData, setTooltipData] = useState<TooltipData>(initialTooltipData);
   const [filteredData, setFilteredData] = useState(data);
@@ -82,13 +85,50 @@ export const Calendar: FC<CalendarProps> = ({
       300
     )
   );
+
+  /**
+   * Filtering logic:
+   * 1. If current is a match, obviously display it
+   * 2. If any child of parent is a match, display that parent
+   * 3. If parent is a match, display that child
+   */
   const debouncedFilterData = useRef(
     debounce((dataToFilter: SchedulerData, enteredSearchPhrase: string) => {
       reset();
+      // console.log("full - dataToFilter:", dataToFilter);
+      const lowercasePhrase = enteredSearchPhrase.toLowerCase();
+      // console.log("in filter - lowercasePhrase:", lowercasePhrase);
       setFilteredData(
-        dataToFilter.filter((item) =>
-          item.label.title.toLowerCase().includes(enteredSearchPhrase.toLowerCase())
-        )
+        dataToFilter.filter((item) => {
+          const parentOfItem = dataToFilter.find(
+            (parent) => parent.label.id === item.label.parentId
+          );
+          const isCurrentItemMatch =
+            item.label.title.toLowerCase().includes(lowercasePhrase) ??
+            item.label.subtitle?.toLowerCase().includes(lowercasePhrase);
+          const childrenIds = dataToFilter
+            .filter((maybeChild) => maybeChild.label.parentId === item.id)
+            .map((child) => child.id);
+          // console.log(`children of ${item.label.title}: `, childrenIds);
+          // If any child is a match, we want to display the parent too
+          const isAnyChildMatch =
+            childrenIds.length &&
+            childrenIds.some((childId) => {
+              const childData = dataToFilter.find((child) => child.id === childId);
+              console.log("in filter - CHILD: ", childData);
+              return (
+                childData?.label.title.toLowerCase().includes(lowercasePhrase) ||
+                (childData?.label.subtitle &&
+                  childData?.label.subtitle.toLowerCase().includes(lowercasePhrase))
+              );
+            });
+          // If parent is a match, display that child
+          const isParentMatch =
+            parentOfItem &&
+            (parentOfItem.label.title.toLowerCase().includes(lowercasePhrase) ??
+              parentOfItem?.label.subtitle?.toLowerCase().includes(lowercasePhrase));
+          return isCurrentItemMatch || isAnyChildMatch || isParentMatch;
+        })
       );
     }, 500)
   );
@@ -132,6 +172,7 @@ export const Calendar: FC<CalendarProps> = ({
   return (
     <StyledOuterWrapper>
       <LeftColumn
+        isFullscreen={isFullscreen ?? false}
         data={page}
         pageNum={currentPageNum}
         pagesAmount={pagesAmount}
@@ -159,7 +200,7 @@ export const Calendar: FC<CalendarProps> = ({
             onTileClick={onTileClick}
           />
         ) : (
-          <EmptyBox />
+          <EmptyBox emptyText={emptyText} emptyTextTwo={emptyTextTwo} />
         )}
         {isVisible && tooltipData?.resourceIndex > -1 && (
           <Tooltip tooltipData={tooltipData} zoom={zoom} />

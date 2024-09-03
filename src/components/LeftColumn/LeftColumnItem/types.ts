@@ -19,3 +19,7 @@ export type StyledLeftColumnItemWrapperProps = {
   clickable: boolean;
   hasAParent: boolean;
 };
+
+export type StyledImageProps = {
+  showBorder?: boolean;
+};

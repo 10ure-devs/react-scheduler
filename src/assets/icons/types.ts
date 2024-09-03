@@ -12,6 +12,7 @@ export type IconsNames =
   | "arrowUp"
   | "arrowDown"
   | "search"
-  | "close";
+  | "close"
+  | "crewIcon";
 
 export type Icon = FunctionComponent<ComponentProps<"svg"> & { title?: string }>;

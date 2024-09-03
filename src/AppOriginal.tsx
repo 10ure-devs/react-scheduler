@@ -60,6 +60,7 @@ function AppOriginal() {
       <ConfigPanel values={values} onSubmit={setValues} />
       {isFullscreen ? (
         <Scheduler
+          isFullscreen={true}
           startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
           onRangeChange={handleRangeChange}
           data={filteredData}
@@ -72,6 +73,7 @@ function AppOriginal() {
       ) : (
         <StyledSchedulerFrame>
           <Scheduler
+            isFullscreen={false}
             startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
             onRangeChange={handleRangeChange}
             isLoading={false}

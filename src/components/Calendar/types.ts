@@ -1,8 +1,11 @@
 import { SchedulerData, SchedulerItemClickData, SchedulerProjectData } from "@/types/global";
 
 export type CalendarProps = {
+  isFullscreen: boolean;
   data: SchedulerData;
   topBarWidth: number;
+  emptyText?: string;
+  emptyTextTwo?: string;
   onTileClick?: (data: SchedulerProjectData) => void;
   onItemClick?: (data: SchedulerItemClickData) => void;
   onTextButtonClick?: (data: SchedulerItemClickData) => void;
