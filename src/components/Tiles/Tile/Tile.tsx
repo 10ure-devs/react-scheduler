@@ -41,9 +41,9 @@ const Tile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
       <StyledInnerWrapper>
         <StyledTextWrapper>
           <StyledStickyWrapper>
-            <StyledText bold>{data.title}</StyledText>
-            <StyledText>{data.subtitle}</StyledText>
-            <StyledDescription>{data.description}</StyledDescription>
+            {data.title && <StyledText bold>{data.title}</StyledText>}
+            {data.subtitle && <StyledText>{` | ${data.subtitle}`}</StyledText>}
+            {data.description && <StyledDescription>{data.description}</StyledDescription>}
             {Boolean(data.cost) && (
               <StyledDescription color={data.bgColor}>Cost: {data.cost}</StyledDescription>
             )}

@@ -25,9 +25,10 @@ const LeftColumnItem: FC<LeftColumnItemProps> = ({
   const handleTextButtonClick = () => {
     onTextButtonClick && onTextButtonClick?.({ id, label: item });
   };
+  const formattedTitle = item.subtitle ? `${item.title} | ${item.subtitle}` : item.title;
   return (
     <StyledWrapper
-      title={item.title + " | " + item.subtitle}
+      title={formattedTitle}
       clickable={typeof onItemClick === "function"}
       rows={rows}
       onClick={() => onItemClick?.({ id, label: item })}

@@ -52,12 +52,6 @@ export const StyledText = styled.p<StyledTextProps>`
     text-decoration: underline;
   `}
   font-weight: ${({ bold }) => (bold ? "600" : "400")};
-  &:first-child {
-    &::after {
-      content: "|";
-      margin: 0 3px;
-    }
-  }
   ${({ fontSize }) =>
     fontSize &&
     `
