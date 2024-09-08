@@ -28,6 +28,13 @@ const Tile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
     zoom
   );
 
+  const isLessThan3DaysLong =
+    new Date(data.endDate).getTime() - new Date(data.startDate).getTime() < 3 * 24 * 60 * 60 * 1000;
+
+  const crewCountText = isLessThan3DaysLong
+    ? `${data.crewCount} Crew`
+    : `${data.crewCount} Scheduled Crew`;
+
   return (
     <StyledTileWrapper
       style={{
@@ -52,7 +59,9 @@ const Tile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
         {data.crewCount !== undefined && (
           <StyledCrewCountWrapper>
             <Icon iconName="crewIcon" width="14" height="14" />
-            <StyledText fontSize="10px" underline>{`${data.crewCount} Scheduled Crew`}</StyledText>
+            <StyledText fontSize="10px" underline>
+              {crewCountText}
+            </StyledText>
           </StyledCrewCountWrapper>
         )}
       </StyledInnerWrapper>

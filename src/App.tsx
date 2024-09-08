@@ -4,7 +4,8 @@ import { ParsedDatesRange } from "./utils/getDatesRange";
 import { ConfigFormValues, SchedulerItemClickData, SchedulerProjectData } from "./types/global";
 import ConfigPanel from "./components/ConfigPanel";
 import { StyledSchedulerFrame } from "./styles";
-import { mockData } from "./mockData";
+// import { mockData } from "./mockData";
+import { mockData } from "./mockDataTimeBug";
 import { Scheduler } from ".";
 
 function App() {

@@ -55,6 +55,14 @@ export const Calendar: FC<CalendarProps> = ({
     previous,
     reset
   } = usePagination(filteredData, datesRange);
+  console.log("Pagination data:", {
+    page,
+    projectsPerPerson,
+    totalRowsPerPage,
+    rowsPerItem,
+    currentPageNum,
+    pagesAmount
+  });
   const debouncedHandleMouseOver = useRef(
     debounce(
       (
@@ -130,6 +138,7 @@ export const Calendar: FC<CalendarProps> = ({
           return isCurrentItemMatch || isAnyChildMatch || isParentMatch;
         })
       );
+      console.log("Filtered data:", filteredData);
     }, 500)
   );
 

@@ -11,6 +11,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
   { zoom, rows, data, onTileClick },
   ref
 ) {
+  console.log("Grid props:", { zoom, rows, data });
   const { handleScrollNext, handleScrollPrev, date, isLoading, cols, startDate } = useCalendar();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const refRight = useRef<HTMLSpanElement>(null);
@@ -22,6 +23,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
       const height = rows * boxHeight + 1;
       resizeCanvas(ctx, width, height);
       drawGrid(ctx, zoom, rows, cols, startDate);
+      console.log("Grid resize:", { width, height, zoom, rows, cols, startDate });
     },
     [cols, startDate, rows, zoom]
   );
