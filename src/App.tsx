@@ -72,10 +72,7 @@ function App() {
       `Item ${data.title} - ${data.subtitle} was clicked. \n==============\nStart date: ${data.startDate} \n==============\nEnd date: ${data.endDate}\n==============\nOccupancy: ${data.occupancy}`
     );
 
-  console.log("");
-
   const handleHeaderClick = (data: SchedulerItemClickData) => {
-    console.log("Header clicked: ", data);
     if (collapsedParentIds.includes(data.id)) {
       setCollapsedParentIds(collapsedParentIds.filter((id) => id !== data.id));
     } else {

@@ -11,15 +11,17 @@ const Tiles: FC<TilesProps> = ({ data, zoom, hasAParentSection, onTileClick }) =
           rows += Math.max(data[personIndex - 1].data.length, 1);
         }
         return person.data.map((projectsPerRow, rowIndex) =>
-          projectsPerRow.map((project) => (
-            <Tile
-              key={project.id}
-              row={rowIndex + rows}
-              data={project}
-              zoom={zoom}
-              onTileClick={onTileClick}
-            />
-          ))
+          projectsPerRow.map((project) => {
+            return (
+              <Tile
+                key={project.id}
+                row={rowIndex + rows}
+                data={project}
+                zoom={zoom}
+                onTileClick={onTileClick}
+              />
+            );
+          })
         );
       })
       .flat(2);
