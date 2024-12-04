@@ -31,7 +31,12 @@ const Tile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
   const isLessThan3DaysLong =
     new Date(data.endDate).getTime() - new Date(data.startDate).getTime() < 3 * 24 * 60 * 60 * 1000;
 
-  const crewCountText = isLessThan3DaysLong
+  const isLessThan2DaysLong =
+    new Date(data.endDate).getTime() - new Date(data.startDate).getTime() < 2 * 24 * 60 * 60 * 1000;
+
+  const crewCountText = isLessThan2DaysLong
+    ? `${data.crewCount}`
+    : isLessThan3DaysLong
     ? `${data.crewCount} Crew`
     : `${data.crewCount} Scheduled Crew`;
 
@@ -48,10 +53,14 @@ const Tile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
       <StyledInnerWrapper>
         <StyledTextWrapper>
           <StyledStickyWrapper>
-            {data.title && <StyledText bold>{data.title}</StyledText>}
-            {data.subtitle && <StyledText>{` | ${data.subtitle}`}</StyledText>}
-            {data.description && <StyledDescription>{data.description}</StyledDescription>}
-            {Boolean(data.cost) && (
+            {data.title && !isLessThan2DaysLong && <StyledText bold>{data.title}</StyledText>}
+            {data.subtitle && !isLessThan2DaysLong && (
+              <StyledText>{` | ${data.subtitle}`}</StyledText>
+            )}
+            {data.description && !isLessThan3DaysLong && (
+              <StyledDescription>{data.description}</StyledDescription>
+            )}
+            {Boolean(data.cost) && !isLessThan3DaysLong && (
               <StyledDescription color={data.bgColor}>Cost: {data.cost}</StyledDescription>
             )}
           </StyledStickyWrapper>
