@@ -8,6 +8,7 @@ export type {
   SchedulerRowLabel,
   SchedulerProjectData,
   SchedulerPositionExtraData,
+  SchedulerMode,
   ZoomLevel,
   Config
 } from "./types/global";
