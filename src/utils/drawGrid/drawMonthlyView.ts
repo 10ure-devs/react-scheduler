@@ -19,7 +19,14 @@ export const drawMonthlyView = (
 
       const isCurrentDay = date.isSame(dayjs(), "day");
 
-      drawCell(ctx, y * dayWidth, i * boxHeight, dayWidth, getIsBusinessDay(date), isCurrentDay);
+      drawCell({
+        ctx,
+        x: y * dayWidth,
+        y: i * boxHeight,
+        width: dayWidth,
+        isBusinessDay: getIsBusinessDay(date),
+        isCurrentDay
+      });
     }
   }
 };

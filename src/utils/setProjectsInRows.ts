@@ -4,8 +4,14 @@ import { DatesRange } from "./getDatesRange";
 
 export const setProjectsInRows = (
   projects: SchedulerProjectData[],
-  datesRange: DatesRange
+  datesRange: DatesRange,
+  singleRow?: boolean
 ): SchedulerProjectData[][] => {
+  // If we always want them on one row, skip collision detection entirely:
+  if (singleRow) {
+    return [projects]; // everything in the first row
+  }
+
   const rows: SchedulerProjectData[][] = [];
   for (const project of projects) {
     let isAdded = false;

@@ -23,7 +23,14 @@ export const drawYearlyView = (
     const isCurrWeek = week.isSame(dayjs(), "week");
 
     for (let y = 0; y < rows; y++) {
-      drawCell(ctx, xPos, y * boxHeight, weekWidth, true, isCurrWeek);
+      drawCell({
+        ctx,
+        x: xPos,
+        y: y * boxHeight,
+        width: weekWidth,
+        isBusinessDay: true,
+        isCurrentDay: isCurrWeek
+      });
     }
 
     xPos += weekWidth;

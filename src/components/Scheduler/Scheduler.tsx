@@ -5,7 +5,7 @@ import { Calendar } from "@/components";
 import CalendarProvider from "@/context/CalendarProvider";
 import LocaleProvider from "@/context/LocaleProvider";
 import { GlobalStyle, theme } from "@/styles";
-import { Config } from "@/types/global";
+import { Config, SchedulerData, SchedulerProjectData } from "@/types/global";
 import { outsideWrapperId } from "@/constants";
 import { SchedulerProps } from "./types";
 import { StyledInnerWrapper, StyledOutsideWrapper } from "./styles";
@@ -26,21 +26,72 @@ const Scheduler = ({
   isLoading,
   minHeight,
   emptyText,
-  emptyTextTwo
+  emptyTextTwo,
+  mode
 }: SchedulerProps) => {
+  // Process data to add missing slots
+  const processedData = useMemo(() => {
+    if (mode !== "positions") return data;
+
+    return data.map((row) => {
+      // Skip parent rows (those without parentId)
+      if (!row.label.parentId) return row;
+
+      const sortedData = [...row.data].sort(
+        (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+      );
+
+      // Find gaps between assignments
+      const gaps: SchedulerProjectData[] = [];
+      for (let i = 0; i < sortedData.length - 1; i++) {
+        const currentEnd = new Date(sortedData[i].endDate);
+        const nextStart = new Date(sortedData[i + 1].startDate);
+
+        // If gap is more than 1 day
+        if (nextStart.getTime() - currentEnd.getTime() > 24 * 60 * 60 * 1000) {
+          gaps.push({
+            id: `missing-${row.id}-${i}`,
+            startDate: currentEnd,
+            endDate: nextStart,
+            occupancy: 0,
+            title: "MISSING",
+            description: `No crew assigned for ${row.label.title}`,
+            bgColor: "#F56565" // Red color for missing slots
+          });
+        }
+      }
+
+      // Add gaps to the data
+      return {
+        ...row,
+        data: [...sortedData, ...gaps].sort(
+          (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+        )
+      };
+    });
+  }, [data, mode]);
+  console.log("mode: ", mode);
   const appConfig: Config = useMemo(
     () => ({
-      zoom: 0,
+      zoom: mode === "positions" ? 1 : 0, // 1 = Month View, 0 = Week View
       filterButtonState: 1,
+      mode,
       includeTakenHoursOnWeekendsInDayView: false,
       ...config
     }),
-    [config]
+    [config, mode]
   );
 
   const outsideWrapperRef = useRef<HTMLDivElement>(null);
   const [topBarWidth, setTopBarWidth] = useState(outsideWrapperRef.current?.clientWidth);
   const defaultStartDate = useMemo(() => dayjs(startDate), [startDate]);
+
+  // If you want to handle any special layout logic for positions:
+  if (mode === "positions") {
+    console.log("positions portion");
+    // e.g. adjust left column grouping logic or style
+    // ...
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,7 +114,7 @@ const Scheduler = ({
       <ThemeProvider theme={theme}>
         <LocaleProvider lang={appConfig.lang}>
           <CalendarProvider
-            data={data}
+            data={processedData}
             isLoading={!!isLoading}
             config={appConfig}
             onRangeChange={onRangeChange}

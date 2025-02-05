@@ -5,7 +5,9 @@ import { ConfigFormValues, SchedulerItemClickData, SchedulerProjectData } from "
 import ConfigPanel from "./components/ConfigPanel";
 import { StyledSchedulerFrame } from "./styles";
 // import { mockData } from "./mockData";
-import { mockData } from "./mockDataTimeBug";
+// import { mockData } from "./mockDataTimeBug";
+// import { mockData } from "./mockDataPositions";
+import { mockData } from "./mockDataPositionsReal";
 import { Scheduler } from ".";
 
 function App() {
@@ -94,11 +96,12 @@ function App() {
           onRangeChange={handleRangeChange}
           data={filteredData}
           isLoading={false}
+          mode="positions"
           onTileClick={handleTileClick}
           onFilterData={handleFilterData}
           config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
           onItemClick={handleHeaderClick}
-          minHeight="500px"
+          minHeight="700px"
           onTextButtonClick={handleTextButtonClick}
           handleClickDownload={handleClickDownload}
           handleClickAddEvent={handleClickAddEvent}
@@ -110,9 +113,10 @@ function App() {
             startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
             onRangeChange={handleRangeChange}
             isLoading={false}
+            mode="positions"
             config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
             data={filteredData}
-            minHeight="500px"
+            minHeight="700px"
             onTileClick={handleTileClick}
             onTextButtonClick={handleTextButtonClick}
             onFilterData={handleFilterData}

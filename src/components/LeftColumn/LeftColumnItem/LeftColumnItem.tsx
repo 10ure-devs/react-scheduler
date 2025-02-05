@@ -34,13 +34,11 @@ const LeftColumnItem: FC<LeftColumnItemProps> = ({
       onClick={() => onItemClick?.({ id, label: item })}
       hasAParent={hasAParent}>
       <StyledInnerWrapper>
-        <StyledImageWrapper showBorder={item.icon ? true : false}>
-          {item.icon ? (
+        {item.icon && (
+          <StyledImageWrapper showBorder={true}>
             <StyledImage src={item.icon} alt="Icon" />
-          ) : (
-            <Icon iconName="defaultAvatar" />
-          )}
-        </StyledImageWrapper>
+          </StyledImageWrapper>
+        )}
         {!hasAParent && (
           <StyledHeaderWrapper>
             <StyledTextTitle>{item.title}</StyledTextTitle>

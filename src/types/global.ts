@@ -50,7 +50,7 @@ export type PaginatedSchedulerRow = {
 };
 
 export type SchedulerRowLabel = {
-  icon: string;
+  icon?: string;
   title: string;
   subtitle: string | null;
   /**
@@ -101,6 +101,10 @@ export type SchedulerProjectData = {
    * Crew count for vessel live
    */
   crewCount?: number;
+  /**
+   * Extra data for the project, used for custom rendering or click data
+   */
+  extraData?: SchedulerPositionExtraData | null;
 };
 
 export type Day = {
@@ -178,3 +182,23 @@ export type TooltipData = {
   resourceIndex: number;
   disposition: OccupancyData;
 };
+
+export type SchedulerPositionExtraData =
+  | {
+      scheduleItemRefId?: string;
+      positionRefId: string;
+      positionName: string;
+      userRefId: string | null;
+      missingCredentials: boolean | null;
+      vesselRefId: string;
+      vesselName: string;
+      crewOnTravelStart: string | null;
+      crewOnTravelEnd: string | null;
+      crewOffTravelStart: string | null;
+      crewOffTravelEnd: string | null;
+      serviceStartedAt: string | null;
+      serviceEndedAt: string | null;
+      shiftInHours: string | null;
+    }
+  | null
+  | undefined;

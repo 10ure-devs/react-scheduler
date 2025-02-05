@@ -15,6 +15,7 @@ export type SchedulerProps = {
   minHeight?: string;
   emptyText?: string;
   emptyTextTwo?: string;
+  mode?: "v1" | "positions";
   onRangeChange?: (range: ParsedDatesRange) => void;
   onTileClick?: (data: SchedulerProjectData) => void;
   onFilterData?: () => void;

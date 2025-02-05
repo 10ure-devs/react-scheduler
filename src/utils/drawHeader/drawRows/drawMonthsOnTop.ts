@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { dayWidth, fonts, headerMonthHeight, monthsInYear, topRowTextYPos } from "@/constants";
+
 import { Day } from "@/types/global";
 import { drawRow } from "../../drawRow";
 
@@ -12,6 +13,10 @@ export const drawMonthsOnTop = (ctx: CanvasRenderingContext2D, startDate: Day) =
     `${startDate.year}-${startDate.month + 1}-${startDate.dayOfMonth}`
   ).month();
   xPos = -startDate.dayOfMonth * dayWidth + dayWidth;
+  // If we want narrower columns in 'Month' mode, use monthDayWidth
+  // else fallback to dayWidth (for 'Year' or other modes).
+  // const cellWidth = monthDayWidth;
+  // xPos = -startDate.dayOfMonth * cellWidth + cellWidth;
 
   for (let i = 0; i < monthsInYear; i++) {
     if (startMonthIndex > monthsInYear - 1) {
@@ -23,7 +28,7 @@ export const drawMonthsOnTop = (ctx: CanvasRenderingContext2D, startDate: Day) =
       .daysInMonth();
 
     width = dayInMonth * dayWidth;
-
+    // width = dayInMonth * cellWidth;
     drawRow({
       ctx,
       x: xPos,
