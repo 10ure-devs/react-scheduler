@@ -1,4 +1,9 @@
-import { SchedulerData, SchedulerItemClickData, SchedulerProjectData } from "@/types/global";
+import {
+  SchedulerMode,
+  SchedulerData,
+  SchedulerItemClickData,
+  SchedulerProjectData
+} from "@/types/global";
 
 export type CalendarProps = {
   isFullscreen: boolean;
@@ -11,6 +16,7 @@ export type CalendarProps = {
   onTextButtonClick?: (data: SchedulerItemClickData) => void;
   handleClickDownload?: () => void;
   handleClickAddEvent?: () => void;
+  mode: SchedulerMode | undefined;
 };
 
 export type StyledSpanProps = {

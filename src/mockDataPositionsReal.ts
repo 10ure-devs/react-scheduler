@@ -20,8 +20,8 @@ export const mockData: SchedulerData = [
     data: [
       {
         id: "4fda2ea0-8338-4d11-87c2-14d1aea19e79_91303f09-7846-4518-9b64-66ae40400749_2024-06-18T13:50:59.729Z_e9d5358f-cce6-4bed-be79-1b7ec83a4398",
-        startDate: new Date("2025-04-30T00:00:00.000Z"),
-        endDate: new Date("2065-02-04T22:59:07.200Z"),
+        startDate: "2025-04-30T00:00:00.000Z",
+        endDate: "2065-02-04T22:59:07.200Z",
         occupancy: 0,
         title: "MISSING",
         bgColor: "#F56565",
@@ -43,8 +43,8 @@ export const mockData: SchedulerData = [
       },
       {
         id: "7a9f7bd0-791c-4ab2-8cc9-2d26121f6883",
-        startDate: new Date("2025-03-28T00:00:00.000Z"),
-        endDate: new Date("2025-04-30T00:00:00.000Z"),
+        startDate: "2025-03-28T00:00:00.000Z",
+        endDate: "2025-04-30T00:00:00.000Z",
         title: "David Martinez",
         description: "03/28/2025 - 04/30/2025",
         occupancy: 0,
@@ -68,8 +68,8 @@ export const mockData: SchedulerData = [
       },
       {
         id: "871e79fb-62cb-40b0-bd87-6d213bf0898e",
-        startDate: new Date("2025-02-02T00:00:00.000Z"),
-        endDate: new Date("2025-03-28T00:00:00.000Z"),
+        startDate: "2025-02-02T00:00:00.000Z",
+        endDate: "2025-03-28T00:00:00.000Z",
         title: "Albert Johnson",
         description: "02/02/2025 - 03/28/2025",
         occupancy: 0,
@@ -103,8 +103,8 @@ export const mockData: SchedulerData = [
     data: [
       {
         id: "4fda2ea0-8338-4d11-87c2-14d1aea19e79_9075a348-dc9a-42bd-b0fd-22d8374a6788_2024-10-09T19:31:59.699Z_a1279c26-4b9a-4730-abee-fda10951fcdd",
-        startDate: new Date("2025-02-04T22:59:07.200Z"),
-        endDate: new Date("2065-02-04T22:59:07.200Z"),
+        startDate: "2025-02-04T22:59:07.200Z",
+        endDate: "2065-02-04T22:59:07.200Z",
         occupancy: 0,
         title: "MISSING",
         bgColor: "#F56565",
@@ -136,8 +136,8 @@ export const mockData: SchedulerData = [
     data: [
       {
         id: "4fda2ea0-8338-4d11-87c2-14d1aea19e79_731b2935-38f0-4bf3-b44b-1151ec39cc45_2024-10-09T19:31:59.699Z_90f5d35a-a1ea-48b6-be21-744243e4a9a8",
-        startDate: new Date("2025-04-01T00:00:00.000Z"),
-        endDate: new Date("2065-02-04T22:59:07.200Z"),
+        startDate: "2025-04-01T00:00:00.000Z",
+        endDate: "2065-02-04T22:59:07.200Z",
         occupancy: 0,
         title: "MISSING",
         bgColor: "#F56565",
@@ -159,8 +159,8 @@ export const mockData: SchedulerData = [
       },
       {
         id: "dddbd983-4497-4ae2-bc5c-610453d0dc9d",
-        startDate: new Date("2025-01-31T00:00:00.000Z"),
-        endDate: new Date("2025-04-01T00:00:00.000Z"),
+        startDate: "2025-01-31T00:00:00.000Z",
+        endDate: "2025-04-01T00:00:00.000Z",
         title: "Linda Rodriguez",
         description: "01/31/2025 - 04/01/2025",
         occupancy: 0,
@@ -194,8 +194,8 @@ export const mockData: SchedulerData = [
     data: [
       {
         id: "4fda2ea0-8338-4d11-87c2-14d1aea19e79_c0e76b9f-7311-488d-a84e-38a44226e40f_2024-10-09T19:31:59.699Z_fda19ee7-7619-4e40-baa7-d8b7c26fa132",
-        startDate: new Date("2025-04-30T00:00:00.000Z"),
-        endDate: new Date("2065-02-04T22:59:07.200Z"),
+        startDate: "2025-04-30T00:00:00.000Z",
+        endDate: "2065-02-04T22:59:07.200Z",
         occupancy: 0,
         title: "MISSING",
         bgColor: "#F56565",
@@ -217,8 +217,8 @@ export const mockData: SchedulerData = [
       },
       {
         id: "808dbf9e-fded-4831-a5fb-f6a6439ea409",
-        startDate: new Date("2025-03-28T00:00:00.000Z"),
-        endDate: new Date("2025-04-30T00:00:00.000Z"),
+        startDate: "2025-03-28T00:00:00.000Z",
+        endDate: "2025-04-30T00:00:00.000Z",
         title: "Malcolm Monroestg",
         description: "03/28/2025 - 04/30/2025",
         occupancy: 0,
@@ -242,8 +242,8 @@ export const mockData: SchedulerData = [
       },
       {
         id: "4fda2ea0-8338-4d11-87c2-14d1aea19e79_c0e76b9f-7311-488d-a84e-38a44226e40f_2024-10-09T19:31:59.699Z_d6a58efb-1de8-4fa4-afda-0dad962df624",
-        startDate: new Date("2025-02-28T00:00:00.000Z"),
-        endDate: new Date("2025-03-28T00:00:00.000Z"),
+        startDate: "2025-02-28T00:00:00.000Z",
+        endDate: "2025-03-28T00:00:00.000Z",
         occupancy: 0,
         title: "MISSING",
         bgColor: "#F56565",
@@ -265,8 +265,8 @@ export const mockData: SchedulerData = [
       },
       {
         id: "d9458de0-daf3-41da-9340-6e2f2268fc50",
-        startDate: new Date("2025-01-31T00:00:00.000Z"),
-        endDate: new Date("2025-02-28T00:00:00.000Z"),
+        startDate: "2025-01-31T00:00:00.000Z",
+        endDate: "2025-02-28T00:00:00.000Z",
         title: "Malcolm Monroestg",
         description: "01/31/2025 - 02/28/2025",
         occupancy: 0,

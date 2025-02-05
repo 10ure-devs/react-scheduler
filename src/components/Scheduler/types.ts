@@ -2,7 +2,8 @@ import {
   Config,
   SchedulerData,
   SchedulerItemClickData,
-  SchedulerProjectData
+  SchedulerProjectData,
+  SchedulerMode
 } from "@/types/global";
 import { ParsedDatesRange } from "@/utils/getDatesRange";
 
@@ -15,7 +16,7 @@ export type SchedulerProps = {
   minHeight?: string;
   emptyText?: string;
   emptyTextTwo?: string;
-  mode?: "v1" | "positions";
+  mode?: SchedulerMode;
   onRangeChange?: (range: ParsedDatesRange) => void;
   onTileClick?: (data: SchedulerProjectData) => void;
   onFilterData?: () => void;

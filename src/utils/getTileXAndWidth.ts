@@ -1,7 +1,34 @@
 import { dayWidth, singleDayWidth } from "@/constants";
 import { DatesRange } from "./getDatesRange";
 
+// new version, ends at start of end date
 export const getTileXAndWidth = (item: DatesRange, range: DatesRange, zoom: number) => {
+  const cellWidth = zoom === 0 ? singleDayWidth : dayWidth;
+
+  const getX = () => {
+    const position = (item.startDate.diff(range.startDate, "day") + 1) * cellWidth;
+    return Math.max(0, position);
+  };
+
+  let width = 0;
+  let x = getX();
+
+  if (item.startDate.isBefore(range.startDate)) {
+    width = item.endDate.subtract(1, "day").diff(range.startDate, "day") * cellWidth + cellWidth;
+    x = 0;
+  } else if (item.endDate.isAfter(range.endDate)) {
+    width = range.endDate.diff(item.startDate, "day") * cellWidth + cellWidth;
+  } else {
+    width = item.endDate.subtract(1, "day").diff(item.startDate, "day") * cellWidth + cellWidth;
+  }
+
+  width = Math.max(0, width);
+
+  return { x, width };
+};
+
+// Old version , ends at end of end date
+export const getTileXAndWidthOld = (item: DatesRange, range: DatesRange, zoom: number) => {
   // console.log("getTileXAndWidth input:", { item, range, zoom });
   const cellWidth = zoom === 0 ? singleDayWidth : dayWidth;
 

@@ -30,7 +30,8 @@ export const Calendar: FC<CalendarProps> = ({
   handleClickDownload,
   handleClickAddEvent,
   emptyText,
-  emptyTextTwo
+  emptyTextTwo,
+  mode
 }) => {
   const [tooltipData, setTooltipData] = useState<TooltipData>(initialTooltipData);
   const [filteredData, setFilteredData] = useState(data);
@@ -207,6 +208,7 @@ export const Calendar: FC<CalendarProps> = ({
             rows={totalRowsPerPage}
             ref={gridRef}
             onTileClick={onTileClick}
+            mode={mode}
           />
         ) : (
           <EmptyBox emptyText={emptyText} emptyTextTwo={emptyTextTwo} />

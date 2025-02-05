@@ -139,6 +139,7 @@ const Scheduler = ({
                   handleClickAddEvent={handleClickAddEvent}
                   emptyText={emptyText}
                   emptyTextTwo={emptyTextTwo}
+                  mode={mode}
                 />
               </StyledInnerWrapper>
             </StyledOutsideWrapper>

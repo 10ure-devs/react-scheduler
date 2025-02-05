@@ -8,7 +8,7 @@ import { GridProps } from "./types";
 import { StyledCanvas, StyledInnerWrapper, StyledSpan, StyledWrapper } from "./styles";
 
 const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
-  { zoom, rows, data, onTileClick },
+  { zoom, rows, data, onTileClick, mode },
   ref
 ) {
   const { handleScrollNext, handleScrollPrev, date, isLoading, cols, startDate } = useCalendar();
@@ -81,6 +81,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
           data={data}
           zoom={zoom}
           onTileClick={onTileClick}
+          mode={mode}
           hasAParentSection={hasAParentSection}
         />
         <StyledSpan ref={refRight} position="right" />

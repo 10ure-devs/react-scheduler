@@ -1,7 +1,12 @@
 import { useCallback, useMemo, useState } from "react";
 import dayjs from "dayjs";
 import { ParsedDatesRange } from "./utils/getDatesRange";
-import { ConfigFormValues, SchedulerItemClickData, SchedulerProjectData } from "./types/global";
+import {
+  SchedulerMode,
+  ConfigFormValues,
+  SchedulerItemClickData,
+  SchedulerProjectData
+} from "./types/global";
 import ConfigPanel from "./components/ConfigPanel";
 import { StyledSchedulerFrame } from "./styles";
 // import { mockData } from "./mockData";
@@ -96,7 +101,7 @@ function App() {
           onRangeChange={handleRangeChange}
           data={filteredData}
           isLoading={false}
-          mode="positions"
+          mode={SchedulerMode.Positions}
           onTileClick={handleTileClick}
           onFilterData={handleFilterData}
           config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
@@ -113,7 +118,7 @@ function App() {
             startDate={values.startDate ? new Date(values.startDate).toISOString() : undefined}
             onRangeChange={handleRangeChange}
             isLoading={false}
-            mode="positions"
+            mode={SchedulerMode.Positions}
             config={{ zoom: 1, maxRecordsPerPage: maxRecordsPerPage }}
             data={filteredData}
             minHeight="700px"

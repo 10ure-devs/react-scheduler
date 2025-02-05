@@ -9,7 +9,7 @@ export const StyledTileWrapper = styled.button`
   position: absolute;
   outline: none;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   text-align: left;
   color: white;
   width: 100%;
