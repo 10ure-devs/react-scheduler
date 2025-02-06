@@ -22,9 +22,12 @@ export const StyledInnerWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const StyledTextWrapper = styled.div`
+export const StyledTextWrapper = styled.div<{ isMissing?: boolean }>`
   display: flex;
   flex-direction: column;
+  justify-content: ${({ isMissing }) => (isMissing ? "center" : "flex-start")};
+  height: 100%;
+  margin-top: ${({ isMissing }) => (isMissing ? "0" : "4px")};
   gap: 2px;
 `;
 

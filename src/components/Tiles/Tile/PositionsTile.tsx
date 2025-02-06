@@ -92,7 +92,7 @@ const PositionsTile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
       }}>
       <StyledInnerWrapper>
         {isMissing ? (
-          <StyledTextWrapper>
+          <StyledTextWrapper isMissing>
             <StyledText bold>{data.title || "MISSING"}</StyledText>
           </StyledTextWrapper>
         ) : (
