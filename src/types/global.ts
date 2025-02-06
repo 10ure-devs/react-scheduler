@@ -186,8 +186,9 @@ export type TooltipData = {
 export type SchedulerPositionExtraData =
   | {
       scheduleItemRefId?: string;
-      positionRefId: string;
-      positionName: string;
+      positionRefId: string | null;
+      positionName: string | null;
+      crewScheduleRefId: string | null;
       userRefId: string | null;
       missingCredentials: boolean | null;
       vesselRefId: string;
