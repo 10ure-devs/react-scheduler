@@ -35,7 +35,7 @@ const formatTileStyles = (
     };
   }
   return {
-    bgColor: tileDefaultBgColor,
+    bgColor: data.bgColor ?? tileDefaultBgColor,
     border: "none",
     color: getTileTextColor(bgColor ?? "")
   };
