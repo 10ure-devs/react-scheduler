@@ -4,6 +4,7 @@ import { getDatesRange } from "@/utils/getDatesRange";
 import { getTileProperties } from "@/utils/getTileProperties";
 import { tileDefaultBgColor, boxHeight } from "@/constants";
 import { getTileTextColor } from "@/utils/getTileTextColor";
+import { SchedulerProjectData } from "@/types/global";
 import { getTileTextConfig } from "./helpers";
 import {
   StyledTileWrapper,
@@ -15,10 +16,34 @@ import {
 } from "./positionStyles";
 import { TileProps } from "./types";
 
+const formatTileStyles = (
+  data: SchedulerProjectData
+): {
+  bgColor: string;
+  border: string;
+  color: string;
+} => {
+  const { title, bgColor, extraData } = data;
+  const isMissing = title?.toUpperCase() === "MISSING";
+  const isVesselHeader = extraData?.positionRefId === null;
+
+  if (isMissing) {
+    return {
+      bgColor: isVesselHeader ? "#FF5050" : "#FDDCDA",
+      border: isVesselHeader ? "none" : "1px dashed #FF5050",
+      color: isVesselHeader ? "#FFFFFF" : "#FF5050"
+    };
+  }
+  return {
+    bgColor: tileDefaultBgColor,
+    border: "none",
+    color: getTileTextColor(bgColor ?? "")
+  };
+};
+
 const PositionsTile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
   const { date } = useCalendar();
   const datesRange = getDatesRange(date, zoom);
-
   const {
     y: computedY,
     x,
@@ -51,6 +76,8 @@ const PositionsTile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
     return null; // You might want to render the original Tile here or handle differently
   }
 
+  const { bgColor, border, color } = formatTileStyles(data);
+
   return (
     <StyledTileWrapper
       onClick={handleClick}
@@ -59,9 +86,9 @@ const PositionsTile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
         top: y,
         width,
         height: tileHeight,
-        backgroundColor: isMissing ? "#FDDCDA" : data.bgColor ?? tileDefaultBgColor,
-        border: isMissing ? "1px dashed #FF5050" : "none",
-        color: isMissing ? "#FF5050" : getTileTextColor(data.bgColor ?? "")
+        backgroundColor: bgColor,
+        border: border,
+        color: color
       }}>
       <StyledInnerWrapper>
         {isMissing ? (
