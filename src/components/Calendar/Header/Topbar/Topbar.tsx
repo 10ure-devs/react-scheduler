@@ -42,7 +42,7 @@ const Topbar: FC<TopbarProps> = ({
     onClearFilterData
   } = useCalendar();
   const { colors } = useTheme();
-  const { filterButtonState = -1, zoom: initialZoom } = config;
+  const { filterButtonState = -1, zoom: currentZoom } = config;
   console.log(" config", config);
   const handleRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log("handleRangeChange - e.target.value", e.target.value);
@@ -59,7 +59,7 @@ const Topbar: FC<TopbarProps> = ({
         <TodayButton onClick={handleGoToday}>{topbar.today}</TodayButton>
       </LeftSide>
       <RightSide>
-        <RangeSelector onChange={handleRangeChange}>
+        <RangeSelector value={currentZoom === 0 ? "week" : "month"} onChange={handleRangeChange}>
           <RangeOption value="week">Week View</RangeOption>
           <RangeOption value="month">Month View</RangeOption>
         </RangeSelector>
