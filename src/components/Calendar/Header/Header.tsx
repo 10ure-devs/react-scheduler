@@ -12,7 +12,8 @@ const Header: FC<HeaderProps> = ({
   zoom,
   topBarWidth,
   handleClickDownload,
-  handleClickAddEvent
+  handleClickAddEvent,
+  addButtonText
 }) => {
   const { week } = useLanguage();
   const { date, cols, dayOfYear, startDate } = useCalendar();
@@ -55,6 +56,7 @@ const Header: FC<HeaderProps> = ({
         width={topBarWidth}
         handleClickDownload={handleClickDownload}
         handleClickAddEvent={handleClickAddEvent}
+        addButtonText={addButtonText}
       />
       <StyledWrapper id={canvasHeaderWrapperId}>
         <StyledCanvas ref={canvasRef} />

@@ -16,6 +16,8 @@ export const getTileTextConfig = (data: SchedulerProjectData): TileTextConfig | 
     serviceStartedAt,
     serviceEndedAt,
     crewOnTravelStart,
+    crewOnTravelEnd,
+    crewOffTravelStart,
     crewOffTravelEnd,
     missingCredentials
   } = data.extraData;
@@ -34,12 +36,27 @@ export const getTileTextConfig = (data: SchedulerProjectData): TileTextConfig | 
       : "";
 
   // Format the travel dates using formatDateToMMDDYYYY
-  const travelText =
-    crewOnTravelStart && crewOffTravelEnd
-      ? `${useShorthand ? "T:" : "Travel:"} ${formatDateToMMDDYYYY(
-          crewOnTravelStart
-        )} - ${formatDateToMMDDYYYY(crewOffTravelEnd)}`
-      : null;
+  const travelText = (() => {
+    if (crewOnTravelStart && crewOffTravelEnd) {
+      return `${useShorthand ? "T:" : "Travel:"} ${formatDateToMMDDYYYY(
+        crewOnTravelStart
+      )} - ${formatDateToMMDDYYYY(crewOffTravelEnd)}`;
+    }
+
+    if (crewOnTravelStart && crewOnTravelEnd) {
+      return `${useShorthand ? "TS:" : "Travel At Start:"} ${formatDateToMMDDYYYY(
+        crewOnTravelStart
+      )} - ${formatDateToMMDDYYYY(crewOnTravelEnd)}`;
+    }
+
+    if (crewOffTravelStart && crewOffTravelEnd) {
+      return `${useShorthand ? "TE:" : "Travel At End:"} ${formatDateToMMDDYYYY(
+        crewOffTravelStart
+      )} - ${formatDateToMMDDYYYY(crewOffTravelEnd)}`;
+    }
+
+    return null;
+  })();
 
   return {
     serviceText,

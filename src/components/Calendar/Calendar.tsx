@@ -1,7 +1,14 @@
 import { ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import debounce from "lodash.debounce";
 import { useCalendar } from "@/context/CalendarProvider";
-import { Day, SchedulerData, SchedulerProjectData, TooltipData, ZoomLevel } from "@/types/global";
+import {
+  Day,
+  SchedulerData,
+  SchedulerMode,
+  SchedulerProjectData,
+  TooltipData,
+  ZoomLevel
+} from "@/types/global";
 import { getTooltipData } from "@/utils/getTooltipData";
 import { getDatesRange } from "@/utils/getDatesRange";
 import { usePagination } from "@/hooks/usePagination";
@@ -200,6 +207,7 @@ export const Calendar: FC<CalendarProps> = ({
           topBarWidth={topBarWidth}
           handleClickDownload={handleClickDownload}
           handleClickAddEvent={handleClickAddEvent}
+          addButtonText={mode === SchedulerMode.Positions ? "Add Crew" : "Add Event"}
         />
         {data.length ? (
           <Grid

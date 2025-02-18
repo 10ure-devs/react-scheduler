@@ -21,7 +21,12 @@ import {
 } from "./styles";
 import { TopbarProps } from "./types";
 
-const Topbar: FC<TopbarProps> = ({ width, handleClickDownload, handleClickAddEvent }) => {
+const Topbar: FC<TopbarProps> = ({
+  addButtonText,
+  width,
+  handleClickDownload,
+  handleClickAddEvent
+}) => {
   const { topbar } = useLanguage();
   const {
     data,
@@ -64,7 +69,9 @@ const Topbar: FC<TopbarProps> = ({ width, handleClickDownload, handleClickAddEve
           <DownloadButton onClick={handleClickDownload}>Download</DownloadButton>
         )}
         {handleClickAddEvent && (
-          <AddEventButton onClick={handleClickAddEvent}>Add Event</AddEventButton>
+          <AddEventButton onClick={handleClickAddEvent}>
+            {addButtonText ?? "Add Event"}
+          </AddEventButton>
         )}
       </RightSide>
     </Wrapper>

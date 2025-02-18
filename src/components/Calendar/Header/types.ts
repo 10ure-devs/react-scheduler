@@ -3,4 +3,5 @@ export type HeaderProps = {
   topBarWidth: number;
   handleClickDownload?: () => void;
   handleClickAddEvent?: () => void;
+  addButtonText?: string;
 };
