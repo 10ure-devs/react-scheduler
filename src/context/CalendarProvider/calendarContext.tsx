@@ -33,5 +33,6 @@ export const calendarContext = createContext<CalendarContextType>({
   recordsThreshold: 0,
   config: {
     zoom: 0
-  }
+  },
+  changeZoom: () => {}
 });

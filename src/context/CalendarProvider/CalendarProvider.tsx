@@ -189,6 +189,7 @@ const CalendarProvider = ({
 
   const changeZoom = (zoomLevel: number) => {
     if (!isAvailableZoom(zoomLevel)) return;
+    console.log("changeZoom: ", zoomLevel);
     setZoom(zoomLevel);
     setCols(getCols(zoomLevel));
     onRangeChange?.(range);
@@ -210,6 +211,7 @@ const CalendarProvider = ({
         handleGoToday,
         zoomIn,
         zoomOut,
+        changeZoom,
         zoom,
         isNextZoom,
         isPrevZoom,

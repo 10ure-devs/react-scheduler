@@ -15,11 +15,10 @@ import {
   TodayButton,
   DownloadButton,
   AddEventButton,
-  RangeSelector,
-  RangeOption,
   Spacer
 } from "./styles";
 import { TopbarProps } from "./types";
+import RangeSelector from "./RangeSelector/RangeSelector";
 
 const Topbar: FC<TopbarProps> = ({
   addButtonText,
@@ -39,17 +38,17 @@ const Topbar: FC<TopbarProps> = ({
     isNextZoom,
     isPrevZoom,
     handleFilterData,
-    onClearFilterData
+    onClearFilterData,
+    zoom: currentZoom,
+    changeZoom
   } = useCalendar();
   const { colors } = useTheme();
-  const { filterButtonState = -1, zoom: currentZoom } = config;
-  console.log(" config", config);
-  const handleRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("handleRangeChange - e.target.value", e.target.value);
-    if (e.target.value === "week") {
-      zoomIn(); // Assuming zoomIn sets zoom to 1
-    } else if (e.target.value === "month") {
-      zoomOut(); // Assuming zoomOut sets zoom to 0
+  console.log("Topbar - currentZoom: ", currentZoom);
+  const handleRangeChange = (value: "week" | "month") => {
+    if (value === "month") {
+      changeZoom(1); // Show Month
+    } else {
+      changeZoom(0); // Show Week
     }
   };
 
@@ -59,11 +58,7 @@ const Topbar: FC<TopbarProps> = ({
         <TodayButton onClick={handleGoToday}>{topbar.today}</TodayButton>
       </LeftSide>
       <RightSide>
-        <RangeSelector value={currentZoom === 0 ? "week" : "month"} onChange={handleRangeChange}>
-          <RangeOption value="week">Week View</RangeOption>
-          <RangeOption value="month">Month View</RangeOption>
-        </RangeSelector>
-
+        <RangeSelector value={currentZoom === 1 ? "month" : "week"} onChange={handleRangeChange} />
         <Spacer />
         {handleClickDownload && (
           <DownloadButton onClick={handleClickDownload}>Download</DownloadButton>

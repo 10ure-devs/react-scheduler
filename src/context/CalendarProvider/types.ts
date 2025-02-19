@@ -11,6 +11,7 @@ export type CalendarContextType = {
   handleGoToday: () => void;
   zoomIn: () => void;
   zoomOut: () => void;
+  changeZoom: (zoom: ZoomLevel) => void;
   handleFilterData: () => void;
   updateTilesCoords: (coords: Coords[]) => void;
   onClearFilterData?: () => void;
