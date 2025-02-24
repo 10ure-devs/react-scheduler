@@ -28,6 +28,15 @@ const formatTileStyles = (
   const { title, bgColor, extraData } = data;
   const isMissing = title?.toUpperCase() === "MISSING";
   const isVesselHeader = extraData?.positionRefId === null;
+  const isTbd = extraData?.isTbd;
+
+  if (isTbd) {
+    return {
+      bgColor: "#F9FF43", // Yellow background for TBD
+      border: "1px dashed #FF5050", // Slightly darker yellow for border
+      color: "#FF5050"
+    };
+  }
 
   if (isMissing) {
     return {
@@ -60,8 +69,8 @@ const PositionsTile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
   );
 
   const isMissing = data.title?.toUpperCase() === "MISSING";
-  const tileHeight = isMissing ? 30 : 58;
-  const verticalOffset = isMissing ? (boxHeight - 30) / 2 : 0;
+  const tileHeight = isMissing || data.extraData?.isTbd ? 30 : 58;
+  const verticalOffset = isMissing || data.extraData?.isTbd ? (boxHeight - 30) / 2 : 0;
   const y = computedY + verticalOffset;
 
   const textConfig = getTileTextConfig(data);

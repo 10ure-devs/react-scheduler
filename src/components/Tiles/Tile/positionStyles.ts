@@ -47,6 +47,8 @@ export const StyledTravelText = styled(StyledText)`
 export const StyledMissingCredentialsDot = styled.div`
   width: 8px;
   height: 8px;
+  min-width: 8px;
+  min-height: 8px;
   border-radius: 50%;
   background-color: #f56565;
   margin-left: 4px;

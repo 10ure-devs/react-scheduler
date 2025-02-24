@@ -1,7 +1,5 @@
-import React from "react";
-
-const BASE_WIDTH = 4;
-const BASE_HEIGHT = 4;
+const BASE_WIDTH = 12;
+const BASE_HEIGHT = 12;
 
 export default function NoteIcon(props: { height?: number; width?: number; color?: string }) {
   const width = props.width || BASE_WIDTH;
