@@ -12,9 +12,11 @@ import {
   StyledTextWrapper,
   StyledText,
   StyledMissingCredentialsDot,
-  StyledTravelText
+  StyledTravelText,
+  StyledNoteWrapper
 } from "./positionStyles";
 import { TileProps } from "./types";
+import NoteIcon from "./NoteIcon";
 
 const formatTileStyles = (
   data: SchedulerProjectData
@@ -91,20 +93,31 @@ const PositionsTile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
         color: color
       }}>
       <StyledInnerWrapper>
-        {isMissing ? (
+        {isMissing || data.extraData?.isTbd ? (
           <StyledTextWrapper isMissing>
-            <StyledText bold>{data.title || "MISSING"}</StyledText>
+            <StyledText bold>
+              {data.extraData?.isTbd
+                ? `Maybe: ${data.extraData.positionName || data.title}`
+                : data.title || "MISSING"}
+            </StyledText>
           </StyledTextWrapper>
         ) : (
           <>
-            {textConfig.showMissingCredentialsDot && <StyledMissingCredentialsDot />}
             <StyledTextWrapper>
-              <StyledText bold>{data.title}</StyledText>
+              <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
+                <StyledText bold>{data.title}</StyledText>
+                {textConfig.showMissingCredentialsDot && <StyledMissingCredentialsDot />}
+              </div>
               <StyledText>{textConfig.serviceText}</StyledText>
               {textConfig.travelText && (
                 <StyledTravelText>{textConfig.travelText}</StyledTravelText>
               )}
             </StyledTextWrapper>
+            {data.extraData?.note && (
+              <StyledNoteWrapper>
+                <NoteIcon width={12} height={12} color={color} />
+              </StyledNoteWrapper>
+            )}
           </>
         )}
       </StyledInnerWrapper>

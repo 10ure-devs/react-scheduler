@@ -45,11 +45,19 @@ export const StyledTravelText = styled(StyledText)`
 `;
 
 export const StyledMissingCredentialsDot = styled.div`
-  position: absolute;
-  top: 4px;
-  right: 4px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background-color: #f56565;
+  margin-left: 4px;
+  display: inline-block;
+`;
+
+export const StyledNoteWrapper = styled.div`
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

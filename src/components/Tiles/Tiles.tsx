@@ -11,11 +11,14 @@ const Tiles: FC<TilesProps> = ({ data, zoom, hasAParentSection, onTileClick, mod
         if (personIndex > 0) {
           rows += Math.max(data[personIndex - 1].data.length, 1);
         }
-        return person.data.map((projectsPerRow, rowIndex) =>
-          projectsPerRow.map((project) => {
+        return person.data.map((projectsPerRow, rowIndex) => {
+          // Sort by ascending start date so the tile on the right (later) is rendered last
+          const sortedProjects = [...projectsPerRow].sort((a, b) => {
+            return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
+          });
+          return sortedProjects.map((project) => {
             // Choose which Tile component to render based on mode
             const TileComponent = mode === "positions" ? PositionsTile : Tile;
-
             return (
               <TileComponent
                 key={project.id}
@@ -26,8 +29,8 @@ const Tiles: FC<TilesProps> = ({ data, zoom, hasAParentSection, onTileClick, mod
                 mode={mode}
               />
             );
-          })
-        );
+          });
+        });
       })
       .flat(2);
   }, [data, onTileClick, zoom, mode]);

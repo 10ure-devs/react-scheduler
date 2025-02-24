@@ -200,6 +200,8 @@ export type SchedulerPositionExtraData =
       serviceStartedAt: string | null;
       serviceEndedAt: string | null;
       shiftInHours: string | null;
+      note?: string;
+      isTbd?: boolean;
     }
   | null
   | undefined;
