@@ -106,7 +106,7 @@ const PositionsTile: FC<TileProps> = ({ row, data, zoom, onTileClick }) => {
           <StyledTextWrapper isMissing>
             <StyledText bold>
               {data.extraData?.isTbd
-                ? `Maybe: ${data.extraData.positionName || data.title}`
+                ? `${data.extraData.note || data.extraData.positionName || ""}`
                 : data.title || "MISSING"}
             </StyledText>
           </StyledTextWrapper>
